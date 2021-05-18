@@ -1,7 +1,9 @@
 import {Button} from '@material-ui/core';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 const about = () => {
+    const router = useRouter()
     return (
         <div>
             <Head>
@@ -11,7 +13,8 @@ const about = () => {
             </Head>
             <main>
                 <div className=""></div>
-                <Button variant="contained" size="small" color="primary">sssss</Button>
+                <Button variant="contained" size="small" color="primary" onClick={() => router.push('/')}>sssss</Button>
+                
             </main>
         </div>
     )
