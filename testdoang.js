@@ -1,15 +1,13 @@
-function minMax(arrayOfNumbers) {
-    let currentMin = arrayOfNumbers[0];
-    let currentMax = arrayOfNumbers[0];
-    for (value of arrayOfNumbers) {
-        if (value < currentMin) {
-            currentMin = value;
-        } else if (value > currentMax) {
-            currentMax = value;
-        }
-    }
-
-    console.log(`currentMin: ${currentMin}, currentMax: ${currentMax}`);
+function fetchUsername() {
+  return new Promise((resolve, reject) => {
+      setTimeout(() => {
+          resolve('JSUser');
+      }, 3000);
+  })
 }
 
-minMax([8, -6, 0, 9, 40, 2, 23, 50, 2, -3, -15, 15, -23, 71]);
+console.log("Fetching username...");
+fetchUsername().then((value) => {
+  console.log(`You are logged in as ${value}`);
+})
+console.log("Welcome!");
