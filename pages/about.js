@@ -1,11 +1,13 @@
 import { Button } from "@material-ui/core";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Header from "../components/header";
 
 const about = () => {
   const router = useRouter();
   return (
     <div>
+      <Header></Header>
       <Head>
         <title>About</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
