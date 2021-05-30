@@ -6,8 +6,8 @@ import Header from "../components/header";
 export default function Home() {
   return (
     <div>
-      
         <Header></Header>
+        <div>hello</div>
       <div className={styles.container}>
         <Head>
           <title>Create Next App</title>
@@ -18,7 +18,6 @@ export default function Home() {
           <h1 className={styles.title}>
             Welcome to <a href="https://nextjs.org">Next.js!</a>
           </h1>
-
           <p className={styles.description}>
             Get started by editing{" "}
             <code className={styles.code}>pages/index.js</code>
