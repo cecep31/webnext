@@ -1,62 +1,41 @@
-import React from "react";
+import Header from "../components/header";
+import React, { Component } from "react";
+import axios from "axios";
+import Contentpost from '../components/contentspost'
 
-export default function Navbar({ fixed }) {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
-  return (
-    <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-pink-500 mb-3">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between md:w-auto lg:static md:block md:justify-start">
-            <a
-              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-              href="#pablo"
-            >
-              pink Tailwind Starter Kit
-            </a>
-            <button
-              className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-              type="button"
-              onClick={() => setNavbarOpen(!navbarOpen)}
-            >
-              <i className="fas fa-bars"></i>
-            </button>
-          </div>
-          <div
-            className={
-              "lg:flex flex-grow items-center" +
-              (navbarOpen ? " flex" : " hidden")
-            }
-            id="example-navbar-danger"
-          >
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Share</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Tweet</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Pin</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+class post extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      post: [],
+    };
+  }
+
+  componentDidMount() {
+    axios.get("https://jsonplaceholder.typicode.com/posts").then((res) => {
+      this.setState({
+        post: res.data,
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div className="font-sans">
+        <Header key="1" />
+        <div className="max-w-7xl m-8 sm:m-8 shadow-md sm:p-3 mx-auto border bg-green-200 rounded-md">
+        <div className="max-w-7xl mx-auto font-bold sm:ml-8 text-2xl mb-8">POST</div>
+          {this.state.post.map((post) => {
+            return (
+              <Contentpost title={post.title} key={post.id} body={post.body}/>
+              
+            )
+          })}
         </div>
-      </nav>
-    </>
-  );
+      </div>
+    );
+  }
 }
+
+export default post;

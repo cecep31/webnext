@@ -1,32 +1,31 @@
 import { useRouter } from "next/router";
-import {useState} from "react"
 
 const Header = () => {
-    const ssss= 12
-    const router = useRouter();
+  const home = { name: "HOME", href: "/", current: true };
+  const rightmenu = [
+    { name: "POST", href: "/post", current: true },
+    { name: "ABOUT", href: "/about", current: false },
+  ];
+  const router = useRouter();
   return (
-    <div className="max-w-7xl sm:justify-between sm:flex bg-gray-100 p-1 mx-auto">
+    <div className="sm:justify-between sm:flex bg-gray-900 px-28 py-2 mx-auto">
       <div>
         <button
-          className="btn text-red-800 p-3"
-          onClick={(navigation) => router.push('/')}
+          className="text-white p-3 "
+          onClick={() => router.push(home.href)}
         >
-          {ssss}
+          {home.name}
         </button>
       </div>
       <div>
-        <button
-          className="btn text-red-800 p-3"
-          onClick={() => router.push("/about")}
-        >
-          About
-        </button>
-        <button
-          className="btn text-red-800 p-3"
-          onClick={() => router.push("/about")}
-        >
-          Blog
-        </button>
+        {rightmenu.map((item) => (
+          <button
+            className="btn text-white p-3"
+            onClick={() => router.push(item.href)}
+          >
+            {item.name}
+          </button>
+        ))}
       </div>
     </div>
   );
