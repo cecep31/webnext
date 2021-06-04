@@ -24,7 +24,7 @@ class post extends Component {
     return (
       <div className="font-sans">
         <Header key="1" />
-        <div className="max-w-7xl m-8 sm:m-8 shadow-md sm:p-3 mx-auto border bg-green-200 rounded-md">
+        <div className="max-w-7xl m-8 sm:m-8 shadow-md sm:p-3 mx-auto border bg-purple-400 rounded-md">
         <div className="max-w-7xl mx-auto font-bold sm:ml-8 text-2xl mb-8">POST</div>
           {this.state.post.map((post) => {
             return (
